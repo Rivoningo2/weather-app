@@ -30,7 +30,7 @@ function updateWeather(response) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchLocation);
 
-search("New York");
+search("Johannesburg");
 //current location function
 
 function searchCurrentLocation(position) {

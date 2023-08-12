@@ -18,7 +18,10 @@
       href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap"
       rel="stylesheet"
     />
-  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="container">
@@ -29,11 +32,11 @@
               <input
                 class="form-control"
                 id="locationInput"
-                placeholder="Type to your location..."
+                placeholder="Type location..."
               />
             </div>
             <div class="col-2">
-              <input type="submit" value="search" class="btn btn-primary">
+              <input type="submit" value="Search" class="btn btn-primary">
           </div>
           <div class="col-2">
               <input type="submit" value="Current" class="btn btn-success" id="current">
@@ -73,102 +76,49 @@
           <div class="row hours">
             <div class="col">
               <div class="p-2 border bg-light">
-                03:00 <br />
+                Sun <br />
                 <i data-feather="cloud-drizzle"></i> <br/> 9°
               </div>
             </div>
             <div class="col">
               <div class="p-2 border bg-light">
-                03:00 <br />
+                Mon <br />
                 <i data-feather="cloud-drizzle"></i> <br />9°
               </div>
             </div>
             <div class="col">
               <div class="p-2 border bg-light">
-                07:00 <br />
+                Tues <br />
                 <i data-feather="cloud-drizzle"></i> <br />10°
               </div>
             </div>
             <div class="col">
               <div class="p-2 border bg-light">
-                11:00 <br />
+                Wed <br />
                 <i data-feather="cloud"></i> <br />17°
               </div>
             </div>
             <div class="col">
               <div class="p-2 border bg-light">
-                15:00 <br />
+                Thurs <br />
                 <i data-feather="cloud"></i> <br />19°
               </div>
             </div>
             <div class="col">
               <div class="p-2 border bg-light">
-                19:00 <br />
-                <i data-feather="moon"></i> <br />15°
-              </div>
-            </div>
-            <div class="col">
-              <div class="p-2 border bg-light">
-                23:00 <br />
+                Fri <br />
                 <i data-feather="moon"></i> <br />15°
               </div>
             </div>
           </div>
         </div>
         <br />
-        <ul class="list-group list-group-horizontal">
-          <li class="list-group-item">Today</li>
-          <li class="list-group-item"><i data-feather="droplet"></i>16%</li>
-          <li class="list-group-item">
-            <i data-feather="cloud"></i> <i data-feather="moon"></i>
-          </li>
-          <li class="list-group-item">19° 9°</li>
-        </ul>
-        <ul class="list-group list-group-horizontal">
-          <li class="list-group-item">Thursday</li>
-          <li class="list-group-item"><i data-feather="droplet"></i>8%</li>
-          <li class="list-group-item">
-            <i data-feather="sun"></i> <i data-feather="moon"></i>
-          </li>
-          <li class="list-group-item">22° 7°</li>
-        </ul>
-        <ul class="list-group list-group-horizontal">
-          <li class="list-group-item">Friday</li>
-          <li class="list-group-item"><i data-feather="droplet"></i>17%</li>
-          <li class="list-group-item">
-            <i data-feather="sun"></i> <i data-feather="cloud"></i>
-          </li>
-          <li class="list-group-item">21° 7°</li>
-        </ul>
-        <ul class="list-group list-group-horizontal">
-          <li class="list-group-item">Saturday</li>
-          <li class="list-group-item"><i data-feather="droplet"></i>11%</li>
-          <li class="list-group-item">
-            <i data-feather="sun"></i> <i data-feather="cloud"></i>
-          </li>
-          <li class="list-group-item">22° 9°</li>
-        </ul>
-        <ul class="list-group list-group-horizontal">
-          <li class="list-group-item">Sunday</li>
-          <li class="list-group-item"><i data-feather="droplet"></i>2%</li>
-          <li class="list-group-item">
-            <i data-feather="sun"></i> <i data-feather="moon"></i>
-          </li>
-          <li class="list-group-item">27° 9°</li>
-        </ul>
-        <ul class="list-group list-group-horizontal">
-          <li class="list-group-item">Tuesday</li>
-          <li class="list-group-item"><i data-feather="droplet"></i>2%</li>
-          <li class="list-group-item">
-            <i data-feather="sun"></i> <i data-feather="moon"></i>
-          </li>
-          <li class="list-group-item">26° 10°</li>
-        </ul>
         <script>
           feather.replace();
         </script>
       </div>
       <script src="source/script.js"></script>
+      <br>
       <footer><a href="https://github.com/Rivoningo2/weather-app">open-source code</a> by Rivoningo Hlungwane</footer>
     </div>
   </body>
