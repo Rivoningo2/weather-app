@@ -1,6 +1,6 @@
 function search(place) {
   let apiKey = "cd2t308b1eacdo4ebb841391dc40bf2b";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${place}&key=${apiKey}&units=metric`;
 
   axios.get(`${apiUrl}`).then(updateWeather);
 }
@@ -12,35 +12,40 @@ function searchLocation(event) {
 }
 
 function updateWeather(response) {
-  document.querySelector("#current-location").innerHTML = response.data.name;
-
-  document.querySelector("#current-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  document.querySelector("#current-location").innerHTML = response.data.city;
+  celsiusTemperature = response.data.temperature.current;
+  document.querySelector("#current-temp").innerHTML =
+    Math.round(celsiusTemperature);
 
   document.querySelector("#current-humidity").innerHTML =
-    response.data.main.humidity;
+    response.data.temperature.humidity;
 
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].description;
+    response.data.condition.description;
 
   document.querySelector("#current-date").innerHTML = formatDate(
     response.data.dt * 1000
   );
+
+  document
+    .querySelector("#first-icon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchLocation);
 
-search("Johannesburg");
 //current location function
 
 function searchCurrentLocation(position) {
   let apiKey = "cd2t308b1eacdo4ebb841391dc40bf2b";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${position.coords.langitude}&lat=${position.coords.latitude}&key=${apiKey}&units=metric`;
+  console.log(position);
   axios.get(apiUrl).then(updateWeather);
 }
 
@@ -76,16 +81,30 @@ function formatDate(timespan) {
 
   return `${days[day]}, ${twoDigits(hours)}:${twoDigits(minutes)}`;
 }
-function fahrenheit(event) {
+
+//change units function
+function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  let temperature = document.querySelector("#current-temp");
-  let fahrenheitTemperature = Math.round((9 * 9) / 5 + 32);
-  temperature.innerHTML = fahrenheitTemperature;
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.querySelector("#current-temp");
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  temperatureElement.innerHTML = fahrenheitTemperature;
 }
 
-function celsius(event) {
+let celsiusTemperature = null;
+let fahrenheitLink = document.querySelector("#fahrenheitSymbol");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+function displayCelsiusTemperature(event) {
   event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let temperature = document.querySelector("#current-temp");
-  let celsiusTemperature = Math.round(9);
-  temperature.innerHTML = celsiusTemperature;
+  temperature.innerHTML = Math.round(celsiusTemperature);
 }
+
+let celsiusLink = document.querySelector("#celsiusSymbol");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+search("Johannesburg");

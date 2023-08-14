@@ -38,7 +38,7 @@ small {
   top: -32px;
   left: -15px;
 }
-.first {
+.first-icon {
   height: 64px;
   width: 64px;
 }
@@ -58,6 +58,10 @@ small {
 
 .btn-primary:hover {
   background-color: #d3caf8;
+}
+.active {
+  font-weight: 900;
+  cursor: default;
 }
 #fahrenheitSymbol {
   text-decoration: none;
