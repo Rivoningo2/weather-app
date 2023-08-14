@@ -26,6 +26,10 @@ function updateWeather(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
+
+  document.querySelector("#current-date").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchLocation);
@@ -49,29 +53,29 @@ let currentLocation = document.querySelector("#current");
 currentLocation.addEventListener("click", showCurrentLocation);
 
 //Date function
-let now = new Date();
+function formatDate(timespan) {
+  let now = new Date();
 
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-let day = now.getDay();
-let hours = now.getHours();
-let minutes = now.getMinutes();
+  let day = now.getDay();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
 
-function twoDigits(value) {
-  return value < 10 ? `0${value}` : value;
+  function twoDigits(value) {
+    return value < 10 ? `0${value}` : value;
+  }
+
+  return `${days[day]}, ${twoDigits(hours)}:${twoDigits(minutes)}`;
 }
-
-let date = document.querySelector("#current-date");
-date.innerHTML = `${days[day]}, ${twoDigits(hours)}:${twoDigits(minutes)}`;
-
 function fahrenheit(event) {
   event.preventDefault();
   let temperature = document.querySelector("#current-temp");

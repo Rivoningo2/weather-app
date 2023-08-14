@@ -15,7 +15,6 @@ h3 {
 #h1 {
   font-size: 70px;
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 #humiditywindspeed {
   font-size: 18px;
@@ -51,16 +50,7 @@ small {
 .p-2.border.bg-light {
   border-radius: 15px;
 }
-li {
-  width: 50%;
-}
-.list-group-item {
-  border: none;
-}
 
-.list-group-horizontal {
-  border-bottom: 1px solid rgb(0, 0, 0, 0.125);
-}
 .btn-primary {
   background-color: #dcd6f7;
   border: none;
@@ -76,4 +66,7 @@ li {
 #celsiusSymbol {
   text-decoration: none;
   color: #25283d;
+}
+#description {
+  text-transform: capitalize;
 }
