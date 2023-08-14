@@ -1,5 +1,5 @@
 function search(place) {
-  let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
+  let apiKey = "cd2t308b1eacdo4ebb841391dc40bf2b";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${apiKey}&units=metric`;
 
   axios.get(`${apiUrl}`).then(updateWeather);
@@ -38,7 +38,7 @@ search("Johannesburg");
 //current location function
 
 function searchCurrentLocation(position) {
-  let apiKey = "46fac47dd8b8fa26d1b6852218ad3dfe";
+  let apiKey = "cd2t308b1eacdo4ebb841391dc40bf2b";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(updateWeather);
