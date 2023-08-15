@@ -36,6 +36,8 @@ function updateWeather(response) {
       "src",
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
+
+  getForecast(response.data.coordinates);
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchLocation);
@@ -45,7 +47,6 @@ searchForm.addEventListener("submit", searchLocation);
 function searchCurrentLocation(position) {
   let apiKey = "cd2t308b1eacdo4ebb841391dc40bf2b";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${position.coords.langitude}&lat=${position.coords.latitude}&key=${apiKey}&units=metric`;
-  console.log(position);
   axios.get(apiUrl).then(updateWeather);
 }
 
@@ -82,6 +83,14 @@ function formatDate(timespan) {
   return `${days[day]}, ${twoDigits(hours)}:${twoDigits(minutes)}`;
 }
 
+function formatDay(timespan) {
+  let date = new Date(timespan * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 //change units function
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
@@ -109,24 +118,42 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 //Function for the upcoming days
 
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Tues", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  console.log(response.data.daily);
   let forecastHTML = ` <div class="row hours">`;
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `    <div class="col-2">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `    <div class="col-2">
       <div class="p-2 border bg-light">
-      ${day}<br/> <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png" alt="weather-icon" width= 40>
-     <br/> 20° 9°
+      ${formatDay(
+        forecastDay.time
+      )}<br/> <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+          forecastDay.condition.icon
+        }.png" alt="weather-icon" width= 40>
+     <br/> <span class = "maximum-temp">${Math.round(
+       forecastDay.temperature.maximum
+     )}°</span> <span class = "minimum-temp">${Math.round(
+          forecastDay.temperature.minimum
+        )}°</span>
     </div> 
     </div>`;
+    }
   });
   forecastHTML = forecastHTML + ` </div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "cd2t308b1eacdo4ebb841391dc40bf2b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 search("Johannesburg");
-displayForecast();
