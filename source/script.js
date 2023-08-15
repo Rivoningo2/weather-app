@@ -107,4 +107,26 @@ function displayCelsiusTemperature(event) {
 let celsiusLink = document.querySelector("#celsiusSymbol");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
+//Function for the upcoming days
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Tues", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastHTML = ` <div class="row hours">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `    <div class="col-2">
+      <div class="p-2 border bg-light">
+      ${day}<br/> <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png" alt="weather-icon" width= 40>
+     <br/> 20° 9°
+    </div> 
+    </div>`;
+  });
+  forecastHTML = forecastHTML + ` </div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 search("Johannesburg");
+displayForecast();
