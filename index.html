@@ -11,7 +11,6 @@
     />
 
     <title>Weather</title>
-    <script src="https://unpkg.com/feather-icons"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,10 +18,13 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="source/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="source/style.css" />
   </head>
   <body>
     <div class="container">
@@ -37,40 +39,49 @@
               />
             </div>
             <div class="col-2">
-              <input type="submit" value="Search" class="btn btn-primary">
-          </div>
-          <div class="col-2">
-              <input type="submit" value="Current" class="btn btn-success" id="current">
+              <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
           </div>
         </form>
-        <h1> 
+        <h1>
           <div class="row">
             <div class="col-6" id="h1">
-             <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png" alt="few-clouds" id="first-icon">
-              <span id="current-temp"></span>  <small ><a href="javascript:void(0);"  id="celsiusSymbol" class="active">°C</a>|<a href="javascript:void(0);" id="fahrenheitSymbol">°F</a> </small></div>
+              <img
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png"
+                alt="few-clouds"
+                id="first-icon"
+              />
+              <span id="current-temp"></span>
+              <small
+                ><a href="javascript:void(0);" id="celsiusSymbol" class="active"
+                  >°C</a
+                >|<a href="javascript:void(0);" id="fahrenheitSymbol">°F</a>
+              </small>
+            </div>
             <div class="col-6" id="humiditywindspeed">
               <ul>
-               <li>
-                 Humidity: <span id="current-humidity"> 50</span>%
-               </li>
-               <li>
-                 Wind: <span id="wind">10</span>km/h
-               </li> 
+                <li>Humidity: <span id="current-humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span> km/h</li>
               </ul>
-          </div>  
+            </div>
           </div>
         </h1>
-        <h2><span id="current-location"></span>
-        </h2>
+        <h2><span id="current-location"></span></h2>
         <h3>
-          19°/8° Feels like 9°
+          Feels like <span id="feels-like"></span>°
           <div id="current-date"></div>
           <div id="description"></div>
         </h3>
-      <div class="weather-forecast" id="forecast">p</div> 
-      <script src="source/script.js"></script>
-      <br>
-      <footer><a href="https://github.com/Rivoningo2/weather-app" target="blank">open-source code</a> by Rivoningo Hlungwane</footer>
+        <div class="weather-forecast" id="forecast"></div>
+        <br />
+        <footer>
+          <a href="https://github.com/Rivoningo2/weather-app" target="blank"
+            >open-source code</a
+          >
+          by Rivoningo Hlungwane
+        </footer>
+      </div>
     </div>
+    <script src="source/script.js"></script>
   </body>
 </html>

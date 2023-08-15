@@ -12,11 +12,15 @@ function searchLocation(event) {
 }
 
 function updateWeather(response) {
+  console.log(response);
   document.querySelector("#current-location").innerHTML = response.data.city;
   celsiusTemperature = response.data.temperature.current;
   document.querySelector("#current-temp").innerHTML =
     Math.round(celsiusTemperature);
 
+  document.querySelector("#feels-like").innerHTML = Math.round(
+    response.data.temperature.feels_like
+  );
   document.querySelector("#current-humidity").innerHTML =
     response.data.temperature.humidity;
 
@@ -41,22 +45,6 @@ function updateWeather(response) {
 }
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchLocation);
-
-//current location function
-
-function searchCurrentLocation(position) {
-  let apiKey = "cd2t308b1eacdo4ebb841391dc40bf2b";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${position.coords.langitude}&lat=${position.coords.latitude}&key=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(updateWeather);
-}
-
-function showCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchCurrentLocation);
-}
-
-let currentLocation = document.querySelector("#current");
-currentLocation.addEventListener("click", showCurrentLocation);
 
 //Date function
 function formatDate(timespan) {

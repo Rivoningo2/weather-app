@@ -1,11 +1,18 @@
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px 20px;
+  background-color: #25283d;
+  border-radius: 30px;
+}
 .weather {
-  border: 30px solid #dcd6f7;
+  border: 1px solid;
   padding: 30px 50px;
-  margin: 20px auto;
+  margin: 0px auto;
   border-radius: 20px;
   max-width: 800px;
-  background-color: #fcf1f5;
   font-family: "Poppins", sans-serif;
+  background-image: url(https://img.freepik.com/free-photo/white-cloud-blue-sky_74190-2381.jpg?w=826&t=st=1692085901~exp=1692086501~hmac=98f46c5c413e39c44f465ec25462053c72a03d2d6146ed9836b35e99bb085bd1);
 }
 h1,
 h2,
@@ -27,6 +34,7 @@ ul {
 
 h2 {
   margin-top: 20px;
+  font-size: 40px;
 }
 h3 {
   font-size: 15px;
